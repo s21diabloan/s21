@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Calculator</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="calculator">
+    <!-- Navigation Tabs -->
+    <nav class="tabs">
+        <a href="/calc" class="tab">Calculator</a>
+        <a href="/calc/credit" class="tab">Credit</a>
+        <a href="/calc/deposit" class="tab active">Deposit</a>
+    </nav>
+
+    <!-- Payments Frequency -->
+    <div class="form-group">
+        <label for="paymentFrequency">Payments Frequency:</label>
+        <input type="number" id="paymentFrequency" value="12" placeholder="Enter frequency (months)">
+    </div>
+
+    <!-- Tax Rate -->
+    <div class="form-group">
+        <label for="taxRate">Tax Rate:</label>
+        <input type="number" step="0.01" id="taxRate" value="2" placeholder="Enter tax rate">
+    </div>
+
+    <!-- Number of Periods -->
+    <div class="form-group">
+        <label for="numPeriods">Number of Periods:</label>
+        <input type="number" id="numPeriods" value="1" placeholder="Enter number of periods">
+    </div>
+
+    <!-- Transaction Amount -->
+    <div class="form-group">
+        <label for="transactionAmount">Transaction Sum:</label>
+        <input type="number" step="0.01" id="transactionAmount" value="10" placeholder="Enter transaction sum">
+    </div>
+
+    <!-- Perform Button -->
+    <div class="input-x">
+        <button class="btn" onclick="performTransaction()">Perform</button>
+    </div>
+
+    <!-- Results -->
+    <div class="results-container">
+        <h2>Results</h2>
+        <div class="result-block">
+            <label for="finalDepositAmount">Final Deposit Amount:</label>
+            <div class="result" id="finalDepositAmount">0</div>
+        </div>
+        <div class="result-block">
+            <label for="taxAmount">Tax:</label>
+            <div class="result" id="taxAmount">00.00</div>
+        </div>
+        <div class="result-block">
+            <label for="interestAmount">Interest:</label>
+            <div class="result" id="interestAmount">00.00</div>
+        </div>
+        <div class="result-block">
+            <label for="balance">Balance:</label>
+            <div class="result" id="balance">00.00</div>
+        </div>
+    </div>
+
+    <!-- Deposit/Withdrawal Options -->
+    <div class="form-group">
+        <label>Transaction Type:</label>
+        <input type="radio" id="depositOption" name="transactionType" value="deposit" checked>
+        <label for="depositOption">Deposit</label>
+        <input type="radio" id="withdrawOption" name="transactionType" value="withdraw">
+        <label for="withdrawOption">Withdraw</label>
+    </div>
+
+    <!-- Interest Capitalization -->
+    <div class="form-group">
+        <label>Interest Capitalization:</label>
+        <input type="radio" id="monthlyCapitalization" name="capitalization" value="month" checked>
+        <label for="monthlyCapitalization">Month</label>
+        <input type="radio" id="quarterlyCapitalization" name="capitalization" value="quarter">
+        <label for="quarterlyCapitalization">Quarter</label>
+        <input type="radio" id="yearlyCapitalization" name="capitalization" value="year">
+        <label for="yearlyCapitalization">Year</label>
+    </div>
+
+    <!-- Lists -->
+    <div class="list-group">
+        <h3>List of Deposits</h3>
+        <ul id="depositList">
+            <!-- Dynamically populated deposits -->
+        </ul>
+    </div>
+
+    <div class="list-group">
+        <h3>List of Withdrawals</h3>
+        <ul id="withdrawalList">
+            <!-- Dynamically populated withdrawals -->
+        </ul>
+    </div>
+</div>
+
+<script src="/script.js"></script>
+
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Deposit Calculator</title>-->
+<!--    <link rel="stylesheet" href="/style.css">-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="calculator">-->
+<!--    &lt;!&ndash; Navigation Tabs &ndash;&gt;-->
+<!--    <nav class="tabs">-->
+<!--        <a href="/calc" class="tab">Calculator</a>-->
+<!--        <a href="/calc/credit" class="tab">Credit</a>-->
+<!--        <a href="/calc/deposit" class="tab active">Deposit</a>-->
+<!--    </nav>-->
+
+<!--    &lt;!&ndash; Payments Frequency &ndash;&gt;-->
+<!--    <div class="form-group">-->
+<!--        <label for="paymentFrequency">Payments frequency:</label>-->
+<!--        <input type="text" id="paymentFrequency" placeholder="Enter frequency">-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Tax Rate &ndash;&gt;-->
+<!--    <div class="form-group">-->
+<!--        <label for="taxRate">Tax rate:</label>-->
+<!--        <input type="text" id="taxRate" value="2" placeholder="Enter tax rate">-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Number of Periods &ndash;&gt;-->
+<!--    <div class="form-group">-->
+<!--        <label for="numPeriods">Number of periods:</label>-->
+<!--        <input type="text" id="numPeriods" value="1" placeholder="Enter number of periods">-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Transaction Amount &ndash;&gt;-->
+<!--    <div class="form-group">-->
+<!--        <label for="transactionAmount">Transaction sum:</label>-->
+<!--        <input type="text" id="transactionAmount" value="10" placeholder="Enter transaction sum">-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Perform Button &ndash;&gt;-->
+<!--    <div class="input-x">-->
+<!--        <button onclick="performTransaction()">PERFORM</button>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Results &ndash;&gt;-->
+<!--    <div class="results-container">-->
+<!--        <h2>Results</h2>-->
+<!--        <div class="result-block">-->
+<!--            <label for="finalDepositAmount">Final deposit amount:</label>-->
+<!--            <div class="result" id="finalDepositAmount">0</div>-->
+<!--        </div>-->
+<!--        <div class="result-block">-->
+<!--            <label for="taxAmount">Tax:</label>-->
+<!--            <div class="result" id="taxAmount">00.00</div>-->
+<!--        </div>-->
+<!--        <div class="result-block">-->
+<!--            <label for="interestAmount">Interest:</label>-->
+<!--            <div class="result" id="interestAmount">00.00</div>-->
+<!--        </div>-->
+<!--        <div class="result-block">-->
+<!--            <label for="balance">Balance:</label>-->
+<!--            <div class="result" id="balance">00.00</div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Deposit/Withdrawal Options &ndash;&gt;-->
+<!--    <div class="form-group">-->
+<!--        <label>Transaction Type:</label>-->
+<!--        <input type="radio" id="depositOption" name="transactionType" value="deposit" checked>-->
+<!--        <label for="depositOption">DEPOSIT</label>-->
+<!--        <input type="radio" id="withdrawOption" name="transactionType" value="withdraw">-->
+<!--        <label for="withdrawOption">WITHDRAW</label>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Interest Capitalization &ndash;&gt;-->
+<!--    <div class="form-group">-->
+<!--        <input type="radio" id="monthlyCapitalization" name="capitalization" value="month" checked>-->
+<!--        <label for="monthlyCapitalization">Month</label>-->
+<!--        <input type="radio" id="quarterlyCapitalization" name="capitalization" value="quarter">-->
+<!--        <label for="quarterlyCapitalization">Quarter</label>-->
+<!--        <input type="radio" id="yearlyCapitalization" name="capitalization" value="year">-->
+<!--        <label for="yearlyCapitalization">Year</label>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Lists &ndash;&gt;-->
+<!--    <div class="list-group">-->
+<!--        <h3>LIST OF DEPOSITS</h3>-->
+<!--        <ul id="depositList">-->
+<!--            &lt;!&ndash; Dynamically populated deposits &ndash;&gt;-->
+<!--        </ul>-->
+<!--    </div>-->
+
+<!--    <div class="list-group">-->
+<!--        <h3>LIST OF WITHDRAWALS</h3>-->
+<!--        <ul id="withdrawalList">-->
+<!--            &lt;!&ndash; Dynamically populated withdrawals &ndash;&gt;-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script src="/script.js"></script>-->
+
+<!--</body>-->
+<!--</html>-->

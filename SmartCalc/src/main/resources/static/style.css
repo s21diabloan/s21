@@ -1,0 +1,663 @@
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center; /* Центрируем только горизонтально */
+    align-items: flex-start;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f9;
+}
+
+.calculator {
+    width: 400px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 20px 0 20px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.calculator input, .calculator select, .calculator textarea {
+    width: 95%;
+    gap: 10px;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.calculator textarea {
+    text-align: right;
+}
+
+
+textarea {
+    justify-content: right;
+    font-size: 14px;
+    resize: none;
+}
+
+.btn {
+    width: 62px;
+    height: 50px;
+    font-size: 16px;
+    margin: 10px auto;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+
+.input-x button,.input-history button {
+        width: 100px;
+        height: 40px;
+        margin: 10px auto;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-align: center;
+}
+
+.input-credit button {
+    width: 200px;
+    align-items: center;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.input-x, .input-history {
+    display: flex;
+    text-align: right;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.input-credit {
+    display: flex;
+    text-align: right;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.input-chart {
+    display: flex;
+    width: 100%;
+    max-width: 400px;
+    gap: 10px;
+    margin: 1px; /* Убираем внешние отступы */
+    padding: 1px; /* Убираем внутренние отступы */
+    flex-wrap: wrap;
+}
+
+.input-chart label {
+    width: 46%; /* Каждая метка занимает одну колонку */
+}
+
+.input-chart input {
+    width: 40%; /* Каждое поле ввода занимает одну колонку */
+}
+
+.input-chart button {
+    width: 190px; /* Каждая кнопка занимает одну колонку */
+}
+
+.result {
+    width: 95%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: right;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.history {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.history p {
+    margin: 5px 0;
+    padding: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.history p:hover {
+    background-color: #e6e6e6;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    list-style: none;
+    padding: 0;
+    border-bottom: 2px solid #ccc;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tab:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.tab.active {
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+    border-bottom: 2px solid white;
+    border-top: 3px solid #007bff;
+}
+
+.list-group ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-group ul li {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.list-group ul li:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 500px) {
+    .input-chart {
+        grid-template-columns: 1fr; /* Переход на одну колонку для маленьких экранов */
+    }
+
+    .input-chart button {
+        grid-column: span 1;
+        width: 100%; /* Растягивать кнопки по ширине */
+    }
+}
+
+/*---------------------------------------------*/
+
+
+/*body {*/
+/*    font-family: Arial, sans-serif;*/
+/*    display: flex;*/
+/*    justify-content: center; !* Центрируем только горизонтально *!*/
+/*    align-items: flex-start;*/
+/*    margin: 0;*/
+/*    padding: 20px;*/
+/*    background-color: #f4f4f9;*/
+/*}*/
+
+/*.calculator {*/
+/*    width: 400px;*/
+/*    background: #fff;*/
+/*    padding: 20px;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+/*    margin-top: 20px;*/
+/*}*/
+
+/*h1, h2 {*/
+/*    text-align: center;*/
+/*    margin: 0 0 20px 0;*/
+/*    font-size: 18px;*/
+/*    color: #333;*/
+/*}*/
+
+/*label {*/
+/*    font-weight: bold;*/
+/*    display: block;*/
+/*    margin-bottom: 5px;*/
+/*    font-size: 14px;*/
+/*}*/
+
+/*.calculator input, .calculator select, .calculator textarea {*/
+/*    !*width: calc(100% - 10px);*!*/
+/*    width: 95%;*/
+/*    margin: 10px 0;*/
+/*    padding: 10px;*/
+/*    font-size: 14px;*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 5px;*/
+/*    background-color: #f9f9f9;*/
+/*    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);*/
+/*}*/
+
+/*textarea {*/
+/*    resize: none;*/
+/*}*/
+
+/*!*.calculator button {*!*/
+/*!*    width: 100px;*!*/
+/*!*    height: 40px;*!*/
+/*!*    margin: 10px auto;*!*/
+/*!*    font-size: 16px;*!*/
+/*!*    border: none;*!*/
+/*!*    border-radius: 5px;*!*/
+/*!*    background-color: #007bff;*!*/
+/*!*    color: white;*!*/
+/*!*    cursor: pointer;*!*/
+/*!*    transition: background-color 0.3s ease;*!*/
+/*!*    text-align: center;*!*/
+/*!*}*!*/
+
+/*.calculator button {*/
+/*    width: 52px; !* Фиксированная ширина *!*/
+/*    height: 50px; !* Фиксированная высота *!*/
+/*    font-size: 16px;*/
+/*    margin: 5px;*/
+/*    cursor: pointer;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    background-color: #007bff;*/
+/*    color: white;*/
+/*    display: inline-flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.calculator button:hover {*/
+/*    background-color: #0056b3;*/
+/*}*/
+
+
+
+/*.input-x, .input-history{*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    gap: 10px;*/
+/*}*/
+
+
+/*.input-chart {*/
+/*    width: 200px;*/
+/*    display: grid;*/
+/*    grid-template-columns: 1fr 1fr; !* Две колонки равной ширины *!*/
+/*    gap: 10px; !* Расстояние между элементами *!*/
+/*}*/
+
+/*.input-chart label {*/
+/*    grid-column: span 1; !* Каждая метка занимает одну колонку *!*/
+/*}*/
+
+/*.input-chart input {*/
+/*    grid-column: span 1; !* Каждое поле ввода занимает одну колонку *!*/
+/*}*/
+
+/*.input-chart button {*/
+/*    grid-column: span 1; !* Каждая кнопка занимает одну колонку *!*/
+/*}*/
+
+/*.input-x button,.input-history button {*/
+/*        width: 100px;*/
+/*        height: 40px;*/
+/*        margin: 10px auto;*/
+/*        font-size: 16px;*/
+/*        border: none;*/
+/*        border-radius: 5px;*/
+/*        background-color: #007bff;*/
+/*        color: white;*/
+/*        cursor: pointer;*/
+/*        transition: background-color 0.3s ease;*/
+/*        text-align: center;*/
+/*}*/
+
+/*.result {*/
+/*    width: 93%;*/
+/*    padding: 10px;*/
+/*    font-size: 16px;*/
+/*    font-weight: bold;*/
+/*    text-align: right;*/
+/*    border: 2px solid #ccc;*/
+/*    border-radius: 5px;*/
+/*    background-color: #f9f9f9;*/
+/*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+/*    margin-bottom: 10px;*/
+/*}*/
+
+
+
+/*.history {*/
+/*    margin-top: 20px;*/
+/*    border: 1px solid #ccc;*/
+/*    padding: 10px;*/
+/*    border-radius: 5px;*/
+/*    max-height: 150px;*/
+/*    overflow-y: auto;*/
+/*    background-color: #f9f9f9;*/
+/*    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);*/
+/*}*/
+
+/*.history p {*/
+/*    margin: 5px 0;*/
+/*    padding: 5px;*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.2s ease;*/
+/*}*/
+
+/*.history p:hover {*/
+/*    background-color: #e6e6e6;*/
+/*}*/
+
+/*.history {*/
+/*    margin-top: 20px;*/
+/*    border: 1px solid #ccc;*/
+/*    padding: 10px;*/
+/*    max-height: 150px;*/
+/*    overflow-y: auto;*/
+/*    background-color: #f9f9f9;*/
+/*}*/
+/*.history p {*/
+/*    margin: 5px 0;*/
+/*    cursor: pointer;*/
+/*}*/
+/*.history p:hover {*/
+/*    background-color: #e6e6e6;*/
+/*}*/
+
+/*.history {*/
+/*    margin-top: 20px;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 10px;*/
+/*}*/
+
+/*#historyDropdown {*/
+/*    width: 100%;*/
+/*    padding: 8px;*/
+/*    font-size: 16px;*/
+/*}*/
+
+/*.tabs {*/
+/*    display: flex;*/
+/*    justify-content: space-around;*/
+/*    margin-bottom: 20px;*/
+/*    list-style: none;*/
+/*    padding: 0;*/
+/*    border-bottom: 2px solid #ccc;*/
+/*}*/
+
+/*.tab {*/
+/*    flex: 1;*/
+/*    text-align: center;*/
+/*    padding: 10px;*/
+/*    font-size: 14px;*/
+/*    color: #333;*/
+/*    text-decoration: none;*/
+/*    background-color: #f1f1f1;*/
+/*    border: 1px solid #ccc;*/
+/*    border-bottom: none;*/
+/*    border-radius: 5px 5px 0 0;*/
+/*    transition: background-color 0.3s ease, color 0.3s ease;*/
+/*}*/
+
+/*.tab:hover {*/
+/*    background-color: #007bff;*/
+/*    color: #fff;*/
+/*}*/
+
+/*.tab.active {*/
+/*    background-color: #fff;*/
+/*    color: #000;*/
+/*    font-weight: bold;*/
+/*    border-bottom: 2px solid white;*/
+/*    border-top: 3px solid #007bff;*/
+/*}*/
+
+
+/*.list-group ul {*/
+/*    list-style-type: none;*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*}*/
+
+/*.list-group ul li {*/
+/*    padding: 5px;*/
+/*    border-bottom: 1px solid #ddd;*/
+/*}*/
+
+/*.list-group ul li:last-child {*/
+/*    border-bottom: none;*/
+/*}*/
+
+
+/*------------------------------------*/
+
+/*body {*/
+/*    font-family: Arial, sans-serif;*/
+/*    display: flex;*/
+/*    justify-content: center; !* Центрируем только горизонтально *!*/
+/*    margin: 0; !* Убираем отступы *!*/
+/*    background-color: #f4f4f9;*/
+/*    padding: 0; !* Убираем внутренние отступы *!*/
+/*}*/
+
+/*.calculator {*/
+/*    width: 383px;*/
+/*    background: #fff;*/
+/*    padding: 20px;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+/*    margin-top: 20px; !* Отступ сверху от верхнего края страницы *!*/
+/*}*/
+
+/*.calculator input {*/
+/*    margin-top: 10px;*/
+/*    width: 91%;*/
+/*    margin-bottom: 10px;*/
+/*    margin-left: 5px;*/
+/*    padding: 10px;*/
+/*    font-size: 16px;*/
+/*    text-align: right;*/
+/*}*/
+
+/*.calculator textarea {*/
+/*    margin-top: 10px;*/
+/*    width: 91%; !* Ширина текстового поля *!*/
+/*    margin-bottom: 10px;*/
+/*    margin-left: 5px;*/
+/*    padding: 10px;*/
+/*    font-size: 16px;*/
+/*    text-align: right;*/
+/*    resize: none; !* Убирает возможность изменения размера *!*/
+/*    font-family: Arial, sans-serif;*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 5px;*/
+/*    background-color: #f9f9f9;*/
+/*    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); !* Добавляет тень *!*/
+/*}*/
+
+
+/*.calculator button {*/
+/*    width: 50px; !* Фиксированная ширина *!*/
+/*    height: 50px; !* Фиксированная высота *!*/
+/*    font-size: 16px;*/
+/*    margin: 5px;*/
+/*    cursor: pointer;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    background-color: #007bff;*/
+/*    color: white;*/
+/*    display: inline-flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.input-group {*/
+/*    width: 98.5%;*/
+/*    display: flex;*/
+/*    gap: 5px;*/
+/*    align-items: center;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.input-group-2 {*/
+/*    width: 98.5%;*/
+/*    display: flex;*/
+/*    gap: 5px;*/
+/*    align-items: center;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.input-group-2 button {*/
+/*    width: 100px; !* Фиксированная ширина *!*/
+/*}*/
+
+/*.input-group input {*/
+/*    height: 25px;*/
+/*    margin-top: 8px;*/
+/*    margin-left: 5px;*/
+/*    padding: 10px;*/
+/*    font-size: 16px;*/
+/*    text-align: right;*/
+/*    flex: 1;*/
+/*}*/
+
+/*.button-grid {*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(6, 1fr); !* 6 кнопок в строке *!*/
+/*    gap: 5px;*/
+/*}*/
+
+/*.calculator button:hover {*/
+/*    background-color: #0056b3;*/
+/*}*/
+
+/*.result {*/
+/*    width: 91%; !* Ширина окна *!*/
+/*    margin-bottom: 10px;*/
+/*    padding: 10px;*/
+/*    margin-left: 5px;*/
+/*    font-size: 18px;*/
+/*    text-align: right;*/
+/*    font-weight: bold;*/
+/*    border: 2px solid black;*/
+/*    border-radius: 5px;*/
+/*    background-color: #f9f9f9;*/
+/*    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+/*}*/
+
+/*.history {*/
+/*    margin-top: 20px;*/
+/*    border: 1px solid #ccc;*/
+/*    padding: 10px;*/
+/*    max-height: 150px;*/
+/*    overflow-y: auto;*/
+/*    background-color: #f9f9f9;*/
+/*}*/
+/*.history p {*/
+/*    margin: 5px 0;*/
+/*    cursor: pointer;*/
+/*}*/
+/*.history p:hover {*/
+/*    background-color: #e6e6e6;*/
+/*}*/
+
+/*.history {*/
+/*    margin-top: 20px;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 10px;*/
+/*}*/
+
+/*#historyDropdown {*/
+/*    width: 100%;*/
+/*    padding: 8px;*/
+/*    font-size: 16px;*/
+/*}*/
+
+
+/*.tabs {*/
+/*    display: flex;*/
+/*    justify-content: space-around;*/
+/*    background-color: #f1f1f1;*/
+/*    border-bottom: 2px solid #ccc;*/
+/*    padding: 0;*/
+/*    margin: 0 auto;*/
+/*    width: 97%;*/
+/*    list-style: none;*/
+/*    overflow: hidden;*/
+/*}*/
+
+/*.tab {*/
+/*    flex: 1;*/
+/*    text-align: center;*/
+/*    text-decoration: none;*/
+/*    padding: 10px 0;*/
+/*    color: #333;*/
+/*    border: 3px solid #ccc;*/
+/*    border-bottom: none;*/
+/*    background-color: #e6e6e6;*/
+/*    font-family: Arial, sans-serif;*/
+/*    font-size: 16px;*/
+/*    transition: background-color 0.3s ease, color 0.3s ease;*/
+/*}*/
+
+/*.tab:hover {*/
+/*    background-color: #0056b3;*/
+/*    color: #fff;*/
+/*}*/
+
+/*.tab.active {*/
+/*    background-color: #fff;*/
+/*    color: #000;*/
+/*    font-weight: bold;*/
+/*    border-bottom: 2px solid white;*/
+/*}*/

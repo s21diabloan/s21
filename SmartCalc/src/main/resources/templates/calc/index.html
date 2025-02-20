@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="calculator">
+    <nav class="tabs">
+        <a href="/calc" class="tab active">Calculator</a>
+        <a href="/calc/credit" class="tab">Credit</a>
+        <a href="/calc/deposit" class="tab">Deposit</a>
+    </nav>
+
+    <div class="input-history">
+        <button onclick="clearHistory()">Clear history</button>
+        <select id="historyDropdown" onchange="handleHistorySelection()">
+            <option value="">History</option>
+        </select>
+    </div>
+
+    <label for="inputValue"></label>
+    <textarea id="inputValue" placeholder="Enter equation" rows="2" maxlength="255"></textarea>
+
+    <div class="result" id="result">0</div>
+
+    <div class="input-x">
+        <button class="btn" onclick="addValue('x')">X</button>
+        <input type="text" id="xValue" placeholder="Enter x value">
+    </div>
+
+    <!-- Первая строка кнопок -->
+    <div class="button-row">
+        <button class="btn" onclick="addValue('asin(')">asin</button>
+        <button class="btn" onclick="addValue('sin(')">sin</button>
+        <button class="btn" onclick="addValue('mod')">mod</button>
+        <button class="btn" onclick="addValue('(')">(</button>
+        <button class="btn" onclick="addValue(')')">)</button>
+        <button class="btn" onclick="clearInputs()">AC</button>
+    </div>
+
+    <!-- Вторая строка кнопок -->
+    <div class="button-row">
+        <button class="btn" onclick="addValue('acos(')">acos</button>
+        <button class="btn" onclick="addValue('ln(')">ln</button>
+        <button class="btn" onclick="addValue('7')">7</button>
+        <button class="btn" onclick="addValue('8')">8</button>
+        <button class="btn" onclick="addValue('9')">9</button>
+        <button class="btn" onclick="addValue('/')">/</button>
+    </div>
+
+    <!-- Третья строка кнопок -->
+    <div class="button-row">
+        <button class="btn" onclick="addValue('cos(')">cos</button>
+        <button class="btn" onclick="addValue('log(')">log</button>
+        <button class="btn" onclick="addValue('4')">4</button>
+        <button class="btn" onclick="addValue('5')">5</button>
+        <button class="btn" onclick="addValue('6')">6</button>
+        <button class="btn" onclick="addValue('*')">*</button>
+    </div>
+
+    <!-- Четвёртая строка кнопок -->
+    <div class="button-row">
+        <button class="btn" onclick="addValue('tan(')">tan</button>
+        <button class="btn" onclick="addValue('sqrt(')">sqrt</button>
+        <button class="btn" onclick="addValue('1')">1</button>
+        <button class="btn" onclick="addValue('2')">2</button>
+        <button class="btn" onclick="addValue('3')">3</button>
+        <button class="btn" onclick="addValue('-')">-</button>
+    </div>
+
+    <!-- Пятая строка кнопок -->
+    <div class="button-row">
+        <button class="btn" onclick="addValue('atan(')">atan</button>
+        <button class="btn" onclick="addValue('^')">x^Y</button>
+        <button class="btn" onclick="addValue('0')">0</button>
+        <button class="btn" onclick="addValue('.')">.</button>
+        <button class="btn" onclick="calculate()">=</button>
+        <button class="btn" onclick="addValue('+')">+</button>
+    </div>
+
+    <!-- Блок для ввода диапазона -->
+    <div class="input-chart">
+        <label for="inputMinX">Min X:</label>
+        <label for="inputMaxX">Max X:</label>
+        <input type="number" id="inputMinX" placeholder="-10">
+        <input type="number" id="inputMaxX" placeholder="10">
+
+        <label for="inputMinY">Min Y:</label>
+        <label for="inputMaxY">Max Y:</label>
+        <input type="number" id="inputMinY" placeholder="-10">
+        <input type="number" id="inputMaxY" placeholder="10">
+
+        <button class="btn" onclick="openChart()">Chart</button>
+        <button class="btn" onclick="showInfo()">Show info</button>
+    </div>
+</div>
+
+<script src="/script.js"></script>
+</body>
+</html>
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Calculator</title>-->
+<!--    <link rel="stylesheet" href="/style.css">-->
+<!--</head>-->
+
+
+<!--<body>-->
+
+<!--<div class="calculator">-->
+<!--    <nav class="tabs">-->
+<!--        <a href="/calc" class="tab active">Calculator</a>-->
+<!--        <a href="/calc/credit" class="tab">Credit</a>-->
+<!--        <a href="/calc/deposit" class="tab">Deposit</a>-->
+<!--    </nav>-->
+
+<!--    <div class="input-history">-->
+<!--        <button onclick="clearHistory()">Clear history</button>-->
+<!--        <select id="historyDropdown" onchange="handleHistorySelection()">-->
+<!--            <option value="">History</option>-->
+<!--        </select>-->
+<!--    </div>-->
+
+
+<!--    <label for="inputValue"></label><textarea id="inputValue"-->
+<!--                                              placeholder="Enter first number" rows="2" maxlength="255"></textarea>-->
+
+<!--    <div class="result" id="result">0</div>-->
+
+
+<!--    <div class="input-x">-->
+<!--        <button onclick="addValue('x')">X</button>-->
+<!--        <input type="text" id="xValue" placeholder="Enter x value">-->
+<!--    </div>-->
+
+
+<!--    <div>-->
+<!--        <button onclick="addValue('asin(')">asin</button>-->
+<!--        <button onclick="addValue('sin(')">sin</button>-->
+<!--        <button onclick="addValue('mod')">mod</button>-->
+<!--        <button onclick="addValue('(')">(</button>-->
+<!--        <button onclick="addValue(')')">)</button>-->
+<!--        <button onclick="clearInputs()">AC</button>-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <button onclick="addValue('acos(')">acos</button>-->
+<!--        <button onclick="addValue('ln(')">ln</button>-->
+<!--        <button onclick="addValue('7')">7</button>-->
+<!--        <button onclick="addValue('8')">8</button>-->
+<!--        <button onclick="addValue('9')">9</button>-->
+<!--        <button onclick="addValue('/')">/</button>-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <button onclick="addValue('cos(')">cos</button>-->
+<!--        <button onclick="addValue('log(')">log</button>-->
+<!--        <button onclick="addValue('4')">4</button>-->
+<!--        <button onclick="addValue('5')">5</button>-->
+<!--        <button onclick="addValue('6')">6</button>-->
+<!--        <button onclick="addValue('*')">*</button>-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <button onclick="addValue('tan(')">tan</button>-->
+<!--        <button onclick="addValue('sqrt(')">sqrt</button>-->
+<!--        <button onclick="addValue('1')">1</button>-->
+<!--        <button onclick="addValue('2')">2</button>-->
+<!--        <button onclick="addValue('3')">3</button>-->
+<!--        <button onclick="addValue('-')">-</button>-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <button onclick="addValue('atan(')">atan</button>-->
+<!--        <button onclick="addValue('^')">x^Y</button>-->
+<!--        <button onclick="addValue('0')">0</button>-->
+<!--        <button onclick="addValue('.')">.</button>-->
+<!--        <button onclick="calculate()">=</button>-->
+<!--        <button onclick="addValue('+')">+</button>-->
+<!--    </div>-->
+
+<!--    <div class="input-chart">-->
+<!--        <label for="inputMinX">Min X:</label>-->
+<!--        <input type="number" id="inputMinX" placeholder="-10">-->
+
+<!--        <label for="inputMaxX">Max X:</label>-->
+<!--        <input type="number" id="inputMaxX" placeholder="10">-->
+
+<!--        <label for="inputMinY">Min Y:</label>-->
+<!--        <input type="number" id="inputMinY" placeholder="-10">-->
+
+<!--        <label for="inputMaxY">Max Y:</label>-->
+<!--        <input type="number" id="inputMaxY" placeholder="10">-->
+
+<!--        <button onclick="openChart()">Chart</button>-->
+<!--        <button onclick="showInfo()">Show info</button>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+
+<!--<script src="/script.js"></script>-->
+<!--</body>-->
+<!--</html>-->

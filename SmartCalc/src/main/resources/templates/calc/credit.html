@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Calculator</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="calculator">
+    <!-- Navigation Tabs -->
+    <nav class="tabs">
+        <a href="/calc" class="tab">Calculator</a>
+        <a href="/calc/credit" class="tab active">Credit</a>
+        <a href="/calc/deposit" class="tab">Deposit</a>
+    </nav>
+
+    <!-- Loan Amount -->
+    <div class="form-group">
+        <label for="inputAmount">Loan Amount:</label>
+        <input type="number" id="inputAmount" placeholder="Enter loan amount">
+    </div>
+
+    <!-- Loan Term -->
+    <div class="form-group">
+        <label for="inputTerm">Term:</label>
+        <input type="number" id="inputTerm" placeholder="Enter term">
+    </div>
+
+    <!-- Term Period -->
+    <div class="form-group">
+        <label for="termPeriod">Select Term Period:</label>
+        <select id="termPeriod">
+            <option value="months">months</option>
+            <option value="years">years</option>
+        </select>
+    </div>
+
+    <!-- Interest Rate -->
+    <div class="form-group">
+        <label for="inputInterestRate">Interest Rate (per year):</label>
+        <input type="number" step="0.01" id="inputInterestRate" placeholder="Enter interest rate">
+    </div>
+
+    <!-- Interest Type -->
+    <div class="form-group">
+        <label for="interestType">Interest Type:</label>
+        <select id="interestType">
+            <option value="annuity">annuity</option>
+            <option value="differentiated">differentiated</option>
+        </select>
+    </div>
+
+    <!-- Calculate Button -->
+    <div class="input-credit">
+        <button class="btn" onclick="calculateCredit()">Calculate credit</button>
+    </div>
+
+    <!-- Results -->
+    <div class="results-container">
+        <h2>Results</h2>
+        <div class="result-block">
+            <label for="resultFirstPayment">First Payment:</label>
+            <div class="result" id="resultFirstPayment">0</div>
+        </div>
+        <div class="result-block">
+            <label for="resultLastPayment">Last Payment:</label>
+            <div class="result" id="resultLastPayment">0</div>
+        </div>
+        <div class="result-block">
+            <label for="resultOverpayment">Overpayment:</label>
+            <div class="result" id="resultOverpayment">0</div>
+        </div>
+        <div class="result-block">
+            <label for="resultTotal">Total:</label>
+            <div class="result" id="resultTotal">0</div>
+        </div>
+    </div>
+</div>
+
+<script src="/script.js"></script>
+</body>
+</html>
