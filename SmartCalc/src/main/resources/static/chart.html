@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h1 id="equationTitle">     Graph</h1>
+<canvas id="chartCanvas" width="400" height="400"></canvas>
+
+<script>
+    window.addEventListener('message', (event) => {
+        const { equation, minX, maxX, minY, maxY, data } = event.data;
+
+        // Обновление заголовка
+        document.getElementById('equationTitle').textContent = `    Graph y = ${equation}`;
+
+        // Отображение графика
+        const ctx = document.getElementById('chartCanvas').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: 'Graph',
+                    data: data,
+                    borderColor: 'blue',
+                    fill: false,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom',
+                        min: minX,
+                        max: maxX
+                    },
+                    y: {
+                        min: minY,
+                        max: maxY
+                    }
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
